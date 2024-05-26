@@ -161,6 +161,9 @@ Thumbs.db
 # CSV files
 *.csv
 
+# VS code files
+.vscode/
+
 # Temporary files
 *.tmp
 *.temp
