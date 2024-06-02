@@ -12,13 +12,20 @@ function App() {
 }
 
 
+function capitalize(string) {
+  return string[0].toUpperCase() + string.slice(1);
+}
 
 function randomAdjective() {
-  return "Fluffy";
+  let slug = generateSlug(1, { partsOfSpeech: ['adjective'] });
+  slug = capitalize(slug);
+  return slug;
 }
 
 function randomNoun() {
-  return "Hat";
+  let slug = generateSlug(1, { partsOfSpeech: ['noun'] });
+  slug = capitalize(slug);
+  return slug;
 }
 
 function randomDigit() {
