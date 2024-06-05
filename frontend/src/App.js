@@ -56,8 +56,7 @@ function randomDigit() {
 }
 
 function randomSymbol() {
-  let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '>', 
-  , '<', '?'];  
+  let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '>', '<', '?'];  
   let randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
   return randomSymbol;
 }
