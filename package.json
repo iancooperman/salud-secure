@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "zxcvbn": "^4.4.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
