@@ -51,7 +51,7 @@ function randomNoun() {
 }
 
 function randomDigit() {
-  return '1';
+  return Math.floor(Math.random() * 10).toString();
 }
 
 function randomSymbol() {
