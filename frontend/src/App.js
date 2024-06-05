@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { generateSlug } from 'random-word-slugs';
+let zxcvbn = require('zxcvbn');
 
 function App() {
   return (
@@ -56,7 +57,7 @@ function randomDigit() {
 
 function randomSymbol() {
   let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '>', 
-  , '<', '?'];
+  , '<', '?'];  
   let randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
   return randomSymbol;
 }
@@ -69,7 +70,9 @@ function randomAcceptablePassword() {
   while (true) {
     let password = randomPassword();
     if (password.length >= 15 && password.length <= 20) {
-      return password;
+      if (zxcvbn(password).score >=3) {
+        return password;
+      }
     }
   }
 }
