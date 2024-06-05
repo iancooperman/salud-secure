@@ -17,13 +17,35 @@ function capitalize(string) {
 }
 
 function randomAdjective() {
-  let slug = generateSlug(1, { partsOfSpeech: ['adjective'] });
+  let slug = generateSlug(1, { 
+    partsOfSpeech: ['adjective']
+  });
   slug = capitalize(slug);
   return slug;
 }
 
 function randomNoun() {
-  let slug = generateSlug(1, { partsOfSpeech: ['noun'] });
+  let slug = generateSlug(1, { 
+    partsOfSpeech: ['noun'],
+    categories: {
+      noun: [
+        "animals",
+        "business",
+        "education",
+        "family",
+        "food",
+        "health",
+        "media",
+        "people",
+        "place",
+        "profession",
+        "sports",
+        "thing",
+        "time",
+        "transportation"
+      ]
+    } 
+  });
   slug = capitalize(slug);
   return slug;
 }
