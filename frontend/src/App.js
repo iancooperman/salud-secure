@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <h1>LAUSD Password Generator</h1>
-      <p>{randomPassword()}</p>
+      <p>{randomAcceptablePassword()}</p>
     </div>
   );
 }
@@ -65,6 +65,14 @@ function randomPassword() {
   return randomAdjective() + randomNoun() + randomDigit() + randomSymbol();
 }
 
+function randomAcceptablePassword() {
+  while (true) {
+    let password = randomPassword();
+    if (password.length >= 15 && password.length <= 20) {
+      return password;
+    }
+  }
+}
 
 
 export default App;
