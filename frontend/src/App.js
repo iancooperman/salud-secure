@@ -55,7 +55,10 @@ function randomDigit() {
 }
 
 function randomSymbol() {
-  return '!';
+  let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '>', 
+  , '<', '?'];
+  let randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+  return randomSymbol;
 }
 
 function randomPassword() {
