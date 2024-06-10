@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <h1>LAUSD Password Generator</h1>
-      <span><p id="generated-password">{randomAcceptablePassword()}</p><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
+      <span><p id="generated-password">{randomAcceptablePassword()}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
   );
 }
@@ -74,6 +74,11 @@ function randomAcceptablePassword() {
       }
     }
   }
+}
+
+function replacePassword() {
+  let generatedPassword = document.getElementById("generated-password");
+  generatedPassword.innerText = randomAcceptablePassword();
 }
 
 function copyPasswordToClipboard() {
