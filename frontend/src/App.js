@@ -4,6 +4,8 @@ import { generateSlug } from 'random-word-slugs';
 let zxcvbn = require('zxcvbn');
 
 function App() {
+  document.title = "LAUSD Password Generator";
+
   return (
     <div className="App">
       <h1>LAUSD Password Generator</h1>
