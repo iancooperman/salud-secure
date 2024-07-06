@@ -6,12 +6,29 @@ let zxcvbn = require('zxcvbn');
 function App() {
   document.title = "LAUSD Password Generator";
 
+  hibp("21BD1");
+
   return (
     <div className="App">
       <h1>LAUSD Password Generator</h1>
       <span><p id="generated-password">{randomAcceptablePassword()}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
   );
+}
+
+function hibp(hash) {
+  let prefix = hash.slice(0, 5); // HIBP API takes in only 5-character prefix
+  let suffix = hash.slice(5); // then must find suffix within response text
+
+  let hashPresent = await fetch(`https://api.pwnedpasswords.com/range/${prefix}`)
+    .then((response) => response.text())
+    .then((response) => {
+      response.text.includes(suffix);
+    })
+
+  
+
+  return hashPresent;
 }
 
 
