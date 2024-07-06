@@ -85,8 +85,10 @@ function replacePassword() {
 
 function copyPasswordToClipboard() {
   let generatedPassword = document.getElementById("generated-password");
-  navigator.clipboard.writeText(generatedPassword.innerText);
-  alert("Copied to clipboard.");
+  navigator.clipboard.writeText(generatedPassword.innerText).then(() => {
+    alert("Copied to clipboard.");
+  });
+  
 }
 
 
