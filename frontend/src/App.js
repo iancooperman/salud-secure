@@ -1,17 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
 import { generateSlug } from 'random-word-slugs';
+import { useState } from 'react';
 let zxcvbn = require('zxcvbn');
 
 function App() {
   document.title = "LAUSD Password Generator";
+  
 
   return (
     <div className="App">
       <h1>LAUSD Password Generator</h1>
-      <span><p id="generated-password">{randomAcceptablePassword()}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
+      <PasswordField></PasswordField>
     </div>
   );
+}
+
+function PasswordField() {
+  const [password, setPassword] = useState("");
+
+  return <div><span><p id="generated-password">{password}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span></div>
 }
 
 async function hibp(hash) {
@@ -23,8 +31,6 @@ async function hibp(hash) {
     .then((response) => {
       return response.includes(suffix);
     })
-
-  
 
   return hashPresent;
 }
