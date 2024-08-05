@@ -6,21 +6,21 @@ let zxcvbn = require('zxcvbn');
 
 function App() {
   document.title = "LAUSD Password Generator";
-  
+
+  const [password, setPassword] = useState("");
+
+  // set a random password with a promise
+  // randomAcceptablePassword().then(res => setPassword(res));
+
 
   return (
     <div className="App">
       <h1>LAUSD Password Generator</h1>
-      <PasswordField></PasswordField>
+      <span><p id="generated-password">{password}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
   );
 }
 
-function PasswordField() {
-  const [password, setPassword] = useState("");
-
-  return <div><span><p id="generated-password">{password}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span></div>
-}
 
 async function hibp(hash) {
   let prefix = hash.slice(0, 5); // HIBP API takes in only 5-character prefix
@@ -88,7 +88,7 @@ function randomPassword() {
   return randomAdjective() + randomNoun() + randomDigit() + randomSymbol();
 }
 
-function randomAcceptablePassword() {
+async function randomAcceptablePassword() {
   while (true) {
     let password = randomPassword();
     if (password.length >= 15 && password.length <= 20) {
