@@ -4,11 +4,11 @@ import { generateSlug } from 'random-word-slugs';
 let zxcvbn = require('zxcvbn');
 
 function App() {
-  document.title = "LAUSD Password Generator";
+  document.title = "SaludSecure";
 
   return (
     <div className="App">
-      <h1>LAUSD Password Generator</h1>
+      <h1>SaludSecure</h1>
       <span><p id="generated-password">{randomAcceptablePassword()}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
   );
