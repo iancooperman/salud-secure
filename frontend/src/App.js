@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <h1>SaludSecure</h1>
-      <span><p id="generated-password">{randomAcceptableStaffPassword()}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
+      <span><p id="generated-password">{randomAcceptableStudentPassword()}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
   );
 }
@@ -63,13 +63,17 @@ function randomSymbol() {
   return randomSymbol;
 }
 
-function randomPassword() {
+function randomStaffPassword() {
   return randomAdjective() + randomNoun() + randomDigit() + randomSymbol();
+}
+
+function randomStudentPassword() {
+  return randomAdjective() + randomNoun() + randomDigit();
 }
 
 function randomAcceptableStaffPassword() {
   while (true) {
-    let password = randomPassword();
+    let password = randomStaffPassword();
     if (password.length >= 15 && password.length <= 20) {
       if (zxcvbn(password).score >=3) {
         return password;
@@ -78,9 +82,28 @@ function randomAcceptableStaffPassword() {
   }
 }
 
+function randomAcceptableStudentPassword() {
+  // Requirements for student passwords:
+  //   - Must be 8 to 20 characters in length
+  //   - Must have at least 1 numeric character
+  //   - Must have at least 1 letter
+  //   - Cannot be commonly used passwords (i.e. must be at least fairly strong, as judged by zxcvbn)
+  //   - Cannot contain username or email
+
+  while (true) {
+    let password = randomStudentPassword();
+    if (password.length >= 8 && password.length <= 20) {
+      if (zxcvbn(password).score >=3) {
+        return password;
+      }
+    }
+  }
+
+}
+
 function replacePassword() {
   let generatedPassword = document.getElementById("generated-password");
-  generatedPassword.innerText = randomAcceptableStaffPassword();
+  generatedPassword.innerText = randomAcceptableStudentPassword();
 }
 
 function copyPasswordToClipboard() {
