@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <h1>SaludSecure</h1>
-      <span><p id="generated-password">{randomAcceptablePassword()}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
+      <span><p id="generated-password">{randomAcceptableStaffPassword()}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
   );
 }
@@ -67,7 +67,7 @@ function randomPassword() {
   return randomAdjective() + randomNoun() + randomDigit() + randomSymbol();
 }
 
-function randomAcceptablePassword() {
+function randomAcceptableStaffPassword() {
   while (true) {
     let password = randomPassword();
     if (password.length >= 15 && password.length <= 20) {
@@ -80,7 +80,7 @@ function randomAcceptablePassword() {
 
 function replacePassword() {
   let generatedPassword = document.getElementById("generated-password");
-  generatedPassword.innerText = randomAcceptablePassword();
+  generatedPassword.innerText = randomAcceptableStaffPassword();
 }
 
 function copyPasswordToClipboard() {
