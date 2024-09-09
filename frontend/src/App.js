@@ -1,15 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
 let zxcvbn = require('zxcvbn');
 
 function App() {
   document.title = "SaludSecure";
 
+  const [password, setPassword] = useState(randomAcceptableStaffPassword());
+
   return (
     <div className="App">
       <h1>SaludSecure</h1>
-      <span><p id="generated-password">{randomAcceptableStudentPassword()}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
+      <span><p id="generated-password">{password}</p><button onClick={ () => { setPassword(randomAcceptableStaffPassword()) } }>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
   );
 }
