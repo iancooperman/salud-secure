@@ -91,9 +91,15 @@ function replacePassword() {
 function copyPasswordToClipboard() {
   let generatedPassword = document.getElementById("generated-password");
   navigator.clipboard.writeText(generatedPassword.innerText).then(() => {
-    alert("Copied to clipboard.");
+    if (!isUserOnAndroid()) { // exclude android because android has its own toast message for this
+      alert("Copied to clipboard.");
+    }
   });
   
+}
+
+function isUserOnAndroid() {
+  return /Android/i.test(navigator.userAgent);
 }
 
 
