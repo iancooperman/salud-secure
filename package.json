@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-ga4": "^2.1.0",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
