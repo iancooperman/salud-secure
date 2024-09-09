@@ -1,7 +1,12 @@
 import logo from './logo.svg';
+import ReactGA from "react-ga4";
 import './App.css';
 import { generateSlug } from 'random-word-slugs';
 let zxcvbn = require('zxcvbn');
+
+
+ReactGA.initialize('G-SF0WV9T7C1');
+ReactGA.send({ hitType: "pageview", page: "/salud-secure", title: "Salud Secure Load" });
 
 function App() {
   document.title = "SaludSecure";
