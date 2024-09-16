@@ -7,12 +7,31 @@ let zxcvbn = require('zxcvbn');
 function App() {
   document.title = "SaludSecure";
 
-  const [password, setPassword] = useState(randomAcceptableStaffPassword());
+  const [generateStaffPassword, setGenerateStaffPassword] = useState(true);
+  const [password, setPassword] = useState("");
+
+  function generatePassword() {
+    console.log("run");
+    if (generateStaffPassword) {
+      setPassword(randomAcceptableStaffPassword());
+    }
+    else {
+      setPassword(randomAcceptableStudentPassword());
+    }
+  }
+
+  useEffect(() => {
+    generatePassword();
+  }, [generateStaffPassword]);
 
   return (
     <div className="App">
       <h1>SaludSecure</h1>
-      <span><p id="generated-password">{password}</p><button onClick={ () => { setPassword(randomAcceptableStaffPassword()) } }>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
+      <label htmlFor="simple-password-generation">Simple</label>
+      <input id="simple-password-generation" value="simple" type="radio" name="password-difficulty" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
+      <label htmlFor="advanced-password-generation">Advanced</label>
+      <input id="advanced-password-generation" value="advanced" type="radio" name="password-difficulty" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
+      <span><p id="generated-password">{password}</p><button onClick={ generatePassword } >Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
   );
 }
