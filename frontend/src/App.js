@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import ReactGA from "react-ga4";
 import './App.css';
+import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
 let zxcvbn = require('zxcvbn');
 
@@ -11,10 +12,31 @@ ReactGA.send({ hitType: "pageview", page: "/salud-secure", title: "Salud Secure 
 function App() {
   document.title = "SaludSecure";
 
+  const [generateStaffPassword, setGenerateStaffPassword] = useState(true);
+  const [password, setPassword] = useState("");
+
+  function generatePassword() {
+    console.log("run");
+    if (generateStaffPassword) {
+      setPassword(randomAcceptableStaffPassword());
+    }
+    else {
+      setPassword(randomAcceptableStudentPassword());
+    }
+  }
+
+  useEffect(() => {
+    generatePassword();
+  }, [generateStaffPassword]);
+
   return (
     <div className="App">
       <h1>SaludSecure</h1>
-      <span><p id="generated-password">{randomAcceptablePassword()}</p><button onClick={replacePassword}>Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
+      <label htmlFor="simple-password-generation">Simple</label>
+      <input id="simple-password-generation" value="simple" type="radio" name="password-difficulty" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
+      <label htmlFor="advanced-password-generation">Advanced</label>
+      <input id="advanced-password-generation" value="advanced" type="radio" name="password-difficulty" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
+      <span><p id="generated-password">{password}</p><button onClick={ generatePassword } >Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
   );
 }
@@ -68,13 +90,17 @@ function randomSymbol() {
   return randomSymbol;
 }
 
-function randomPassword() {
+function randomStaffPassword() {
   return randomAdjective() + randomNoun() + randomDigit() + randomSymbol();
 }
 
-function randomAcceptablePassword() {
+function randomStudentPassword() {
+  return randomAdjective() + randomNoun() + randomDigit();
+}
+
+function randomAcceptableStaffPassword() {
   while (true) {
-    let password = randomPassword();
+    let password = randomStaffPassword();
     if (password.length >= 15 && password.length <= 20) {
       if (zxcvbn(password).score >=3) {
         return password;
@@ -83,9 +109,28 @@ function randomAcceptablePassword() {
   }
 }
 
+function randomAcceptableStudentPassword() {
+  // Requirements for student passwords:
+  //   - Must be 8 to 20 characters in length
+  //   - Must have at least 1 numeric character
+  //   - Must have at least 1 letter
+  //   - Cannot be commonly used passwords (i.e. must be at least fairly strong, as judged by zxcvbn)
+  //   - Cannot contain username or email
+
+  while (true) {
+    let password = randomStudentPassword();
+    if (password.length >= 8 && password.length <= 20) {
+      if (zxcvbn(password).score >=3) {
+        return password;
+      }
+    }
+  }
+
+}
+
 function replacePassword() {
   let generatedPassword = document.getElementById("generated-password");
-  generatedPassword.innerText = randomAcceptablePassword();
+  generatedPassword.innerText = randomAcceptableStudentPassword();
 }
 
 function copyPasswordToClipboard() {
