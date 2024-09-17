@@ -3,6 +3,11 @@ import ReactGA from "react-ga4";
 import './App.css';
 import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 let zxcvbn = require('zxcvbn');
 
 
@@ -32,10 +37,34 @@ function App() {
   return (
     <div className="App">
       <h1>SaludSecure</h1>
-      <label htmlFor="simple-password-generation">Simple</label>
-      <input id="simple-password-generation" value="simple" type="radio" name="password-difficulty" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
-      <label htmlFor="advanced-password-generation">Advanced</label>
-      <input id="advanced-password-generation" value="advanced" type="radio" name="password-difficulty" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
+      <FormControl>
+        <FormLabel 
+        htmlFor="simple-password-generation" 
+        id="demo-radio-buttons-group-label">
+          Password Complexity
+        </FormLabel>
+        <RadioGroup
+          row
+          aria-labelledby='demo-radio-buttons-group-label'
+          defaultValue="Advanced"
+          name="password-complexity-radio-buttons-group">
+        <FormControlLabel 
+          id="simple-password-generation" 
+          value="simple" 
+          label="Simple" 
+          control={<Radio />} 
+          name="password-difficulty" 
+          checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
+        <FormControlLabel 
+          id="advanced-password-generation" 
+          value="advanced" 
+          label="Advanced" 
+          control={<Radio />} 
+          name="password-difficulty" 
+          checked={generateStaffPassword} 
+          onChange={ () => { setGenerateStaffPassword(true) } }/>
+        </RadioGroup>
+      </FormControl>
       <span><p id="generated-password">{password}</p><button onClick={ generatePassword } >Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
   );
