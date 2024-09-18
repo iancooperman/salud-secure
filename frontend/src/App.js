@@ -18,12 +18,12 @@ ReactGA.send({ hitType: "pageview", page: "/salud-secure", title: "Salud Secure 
 function App() {
   document.title = "SaludSecure";
 
-  const [generateStaffPassword, setGenerateStaffPassword] = useState(true);
+  const [advancedPasswordComplexity, setAdvancedPasswordComplexity] = useState(true);
   const [password, setPassword] = useState("");
 
   function generatePassword() {
     console.log("run");
-    if (generateStaffPassword) {
+    if (advancedPasswordComplexity) {
       setPassword(randomAcceptableStaffPassword());
     }
     else {
@@ -33,7 +33,7 @@ function App() {
 
   useEffect(() => {
     generatePassword();
-  }, [generateStaffPassword]);
+  }, [advancedPasswordComplexity]);
 
   return (
     <div className="App">
@@ -47,8 +47,8 @@ function App() {
         <FormControlLabel 
           control={<Switch
                       className='centered'
-                      checked={generateStaffPassword}
-                      onChange={() => setGenerateStaffPassword(!generateStaffPassword)}/>} 
+                      checked={advancedPasswordComplexity}
+                      onChange={() => setAdvancedPasswordComplexity(!advancedPasswordComplexity)}/>} 
           label="Advanced" />
       </FormGroup>
       <span><p id="generated-password">{password}</p><button onClick={ generatePassword } >Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
