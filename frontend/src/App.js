@@ -19,7 +19,10 @@ function App() {
   document.title = "SaludSecure";
 
   return (
-    <PasswordGenerator />
+    <div className="App">
+      <h1>SaludSecure</h1>
+      <PasswordGenerator />
+    </div>
   );
   
 }
@@ -43,8 +46,7 @@ function PasswordGenerator() {
   }, [advancedPasswordComplexity]);
 
   return (
-    <div className="App">
-      <h1>SaludSecure</h1>
+    <div className='PasswordGenerator'>
       <FormGroup>
         <FormLabel 
         htmlFor="simple-password-generation" 
