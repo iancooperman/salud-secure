@@ -18,6 +18,13 @@ ReactGA.send({ hitType: "pageview", page: "/salud-secure", title: "Salud Secure 
 function App() {
   document.title = "SaludSecure";
 
+  return (
+    <PasswordGenerator />
+  );
+  
+}
+
+function PasswordGenerator() {
   const [advancedPasswordComplexity, setAdvancedPasswordComplexity] = useState(true);
   const [password, setPassword] = useState("");
 
