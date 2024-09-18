@@ -8,6 +8,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { FormGroup, Switch } from '@mui/material';
 let zxcvbn = require('zxcvbn');
 
 
@@ -37,34 +38,19 @@ function App() {
   return (
     <div className="App">
       <h1>SaludSecure</h1>
-      <FormControl>
+      <FormGroup>
         <FormLabel 
         htmlFor="simple-password-generation" 
         id="demo-radio-buttons-group-label">
           Password Complexity
         </FormLabel>
-        <RadioGroup
-          row
-          aria-labelledby='demo-radio-buttons-group-label'
-          defaultValue="Advanced"
-          name="password-complexity-radio-buttons-group">
         <FormControlLabel 
-          id="simple-password-generation" 
-          value="simple" 
-          label="Simple" 
-          control={<Radio />} 
-          name="password-difficulty" 
-          checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
-        <FormControlLabel 
-          id="advanced-password-generation" 
-          value="advanced" 
-          label="Advanced" 
-          control={<Radio />} 
-          name="password-difficulty" 
-          checked={generateStaffPassword} 
-          onChange={ () => { setGenerateStaffPassword(true) } }/>
-        </RadioGroup>
-      </FormControl>
+          control={<Switch
+                      className='centered'
+                      checked={generateStaffPassword}
+                      onChange={() => setGenerateStaffPassword(!generateStaffPassword)}/>} 
+          label="Advanced" />
+      </FormGroup>
       <span><p id="generated-password">{password}</p><button onClick={ generatePassword } >Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
   );
