@@ -61,7 +61,11 @@ function PasswordGenerator() {
                       onChange={() => setAdvancedPasswordComplexity(!advancedPasswordComplexity)}/>} 
           label="Advanced" />
       </FormGroup>
-      <span><p id="generated-password">{password}</p><PasswordGeneratorButton variant='contained' onClick={ generatePassword } >Regenerate</PasswordGeneratorButton><PasswordGeneratorButton variant='contained' endIcon={<ContentCopyIcon />} onClick={copyPasswordToClipboard}>Copy to Clipboard</PasswordGeneratorButton></span>
+      <div id='password-box'><p id="generated-password">{password}</p></div>
+      <div>
+        <PasswordGeneratorButton variant='contained' onClick={ generatePassword } >Regenerate</PasswordGeneratorButton>
+        <PasswordGeneratorButton variant='contained' endIcon={<ContentCopyIcon />} onClick={copyPasswordToClipboard}>Copy to Clipboard</PasswordGeneratorButton>
+      </div>
     </div>
   );
 }
