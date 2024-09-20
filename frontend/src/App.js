@@ -8,7 +8,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { Button, FormGroup, Switch } from '@mui/material';
+import { Button, FormGroup, styled, Switch } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 let zxcvbn = require('zxcvbn');
 
@@ -61,10 +61,15 @@ function PasswordGenerator() {
                       onChange={() => setAdvancedPasswordComplexity(!advancedPasswordComplexity)}/>} 
           label="Advanced" />
       </FormGroup>
-      <span><p id="generated-password">{password}</p><Button variant='contained' onClick={ generatePassword } >Regenerate</Button><Button variant='contained' endIcon={<ContentCopyIcon />} onClick={copyPasswordToClipboard}>Copy to Clipboard</Button></span>
+      <span><p id="generated-password">{password}</p><PasswordGeneratorButton variant='contained' onClick={ generatePassword } >Regenerate</PasswordGeneratorButton><PasswordGeneratorButton variant='contained' endIcon={<ContentCopyIcon />} onClick={copyPasswordToClipboard}>Copy to Clipboard</PasswordGeneratorButton></span>
     </div>
   );
 }
+
+const PasswordGeneratorButton = styled(Button)({
+  backgroundColor: '#F29E29',
+  textTransform: 'capitalize',
+});
 
 
 function capitalize(string) {
