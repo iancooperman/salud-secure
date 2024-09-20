@@ -8,7 +8,8 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { FormGroup, Switch } from '@mui/material';
+import { Button, FormGroup, Switch } from '@mui/material';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 let zxcvbn = require('zxcvbn');
 
 
@@ -60,7 +61,7 @@ function PasswordGenerator() {
                       onChange={() => setAdvancedPasswordComplexity(!advancedPasswordComplexity)}/>} 
           label="Advanced" />
       </FormGroup>
-      <span><p id="generated-password">{password}</p><button onClick={ generatePassword } >Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
+      <span><p id="generated-password">{password}</p><Button variant='contained' onClick={ generatePassword } >Regenerate</Button><Button variant='contained' endIcon={<ContentCopyIcon />} onClick={copyPasswordToClipboard}>Copy to Clipboard</Button></span>
     </div>
   );
 }
