@@ -23,7 +23,6 @@ function PasswordGenerator() {
   const [password, setPassword] = useState("");
 
   function generatePassword() {
-    console.log("run");
     if (advancedPasswordComplexity) {
       setPassword(randomAcceptableStaffPassword());
     }
