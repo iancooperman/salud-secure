@@ -46,16 +46,18 @@ function PasswordGenerator() {
 
   return (
     <Box className="PasswordGenerator"
-      sx={{
+      sx={(theme) => ({
         border: '2px solid black',
         borderRadius: '10px',
         width: 500,
         aspectRatio: 1.618,
 
+        backgroundColor: `rgba(${theme.vars.palette.primary.lightChannel})`,
+
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-around'
-      }}
+      })}
     >
       <label htmlFor="simple-password-generation">Simple</label>
       <input id="simple-password-generation" value="simple" type="radio" name="password-difficulty" checked={!advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(false) } }/>
