@@ -3,6 +3,10 @@ import ReactGA from "react-ga4";
 import './App.css';
 import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
+
+import Button from '@mui/joy/Button';
+
+
 let zxcvbn = require('zxcvbn');
 
 
@@ -42,7 +46,7 @@ function PasswordGenerator() {
       <input id="simple-password-generation" value="simple" type="radio" name="password-difficulty" checked={!advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(false) } }/>
       <label htmlFor="advanced-password-generation">Advanced</label>
       <input id="advanced-password-generation" value="advanced" type="radio" name="password-difficulty" checked={advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(true) } }/>
-      <span><p id="generated-password">{password}</p><button onClick={ generatePassword } >Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
+      <span><p id="generated-password">{password}</p><Button variantonClick={ generatePassword } >Regenerate</Button><Button onClick={copyPasswordToClipboard}>Copy to Clipboard</Button></span>
     </div>
   );
 }
