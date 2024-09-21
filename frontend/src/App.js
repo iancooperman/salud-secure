@@ -5,7 +5,10 @@ import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
 
 import Button from '@mui/joy/Button';
-import Box from '@mui/joy/Box'
+import Box from '@mui/joy/Box';
+import Switch from '@mui/joy/Switch';
+import FormControl from '@mui/joy/FormControl';
+import FormLabel from '@mui/joy/FormLabel';
 
 
 let zxcvbn = require('zxcvbn');
@@ -59,10 +62,13 @@ function PasswordGenerator() {
         justifyContent: 'space-around'
       })}
     >
-      <label htmlFor="simple-password-generation">Simple</label>
-      <input id="simple-password-generation" value="simple" type="radio" name="password-difficulty" checked={!advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(false) } }/>
-      <label htmlFor="advanced-password-generation">Advanced</label>
-      <input id="advanced-password-generation" value="advanced" type="radio" name="password-difficulty" checked={advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(true) } }/>
+      <FormControl
+      >
+        <Switch id="advanced-password-generation" startDecorator={'Simple'} endDecorator={'Advanced'} value="advanced" name="password-difficulty" checked={advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(!advancedPasswordComplexity) } }/
+        >
+      </FormControl>
+
+      
       <span><p id="generated-password">{password}</p><Button onClick={ generatePassword } >Regenerate</Button><Button onClick={copyPasswordToClipboard}>Copy to Clipboard</Button></span>
     </Box>
   );
