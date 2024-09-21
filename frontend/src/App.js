@@ -8,7 +8,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { Button, FormGroup, styled, Switch } from '@mui/material';
+import { Button, createTheme, FormGroup, styled, Switch, ThemeProvider } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 let zxcvbn = require('zxcvbn');
 
@@ -16,14 +16,28 @@ let zxcvbn = require('zxcvbn');
 ReactGA.initialize('G-SF0WV9T7C1');
 ReactGA.send({ hitType: "pageview", page: "/salud-secure", title: "Salud Secure Load" });
 
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#009dfd',
+    },
+    secondary: {
+      main: '#ff9900',
+    },
+  },
+});
+
 function App() {
   document.title = "SaludSecure";
 
   return (
-    <div className="App">
-      <h1>SaludSecure</h1>
-      <PasswordGenerator />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <h1>SaludSecure</h1>
+        <PasswordGenerator />
+      </div>
+    </ThemeProvider>
   );
   
 }
@@ -63,18 +77,18 @@ function PasswordGenerator() {
       </FormGroup>
       <div id='password-box'><p id="generated-password">{password}</p></div>
       <div id='button-section'>
-        <PasswordGeneratorButton variant='contained' onClick={ generatePassword } >Regenerate</PasswordGeneratorButton>
-        <PasswordGeneratorButton variant='contained' endIcon={<ContentCopyIcon />} onClick={copyPasswordToClipboard}>Copy to Clipboard</PasswordGeneratorButton>
+        <Button variant='contained' onClick={ generatePassword } >Regenerate</Button>
+        <Button variant='contained' endIcon={<ContentCopyIcon />} onClick={copyPasswordToClipboard}>Copy to Clipboard</Button>
       </div>
     </div>
   );
 }
 
-const PasswordGeneratorButton = styled(Button)({
-  backgroundColor: '#FD6000',
-  textTransform: 'capitalize',
-  width: '45%'
-});
+// const PasswordGeneratorButton = styled(Button)({
+//   // backgroundColor: '#FD6000',
+//   textTransform: 'capitalize',
+//   width: '45%'
+// });
 
 
 function capitalize(string) {
