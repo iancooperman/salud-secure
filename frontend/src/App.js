@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
 
 import Button from '@mui/joy/Button';
+import Box from '@mui/joy/Box'
 
 
 let zxcvbn = require('zxcvbn');
@@ -15,9 +16,13 @@ ReactGA.send({ hitType: "pageview", page: "/salud-secure", title: "Salud Secure 
 
 function App() {
   document.title = "SaludSecure";
+  
 
   return (
-    <PasswordGenerator />
+    <div className="App">
+      <h1>SaludSecure</h1>
+      <PasswordGenerator />
+    </div>
   );
   
 }
@@ -40,14 +45,13 @@ function PasswordGenerator() {
   }, [advancedPasswordComplexity]);
 
   return (
-    <div className="App">
-      <h1>SaludSecure</h1>
+    <Box className="PasswordGenerator">
       <label htmlFor="simple-password-generation">Simple</label>
       <input id="simple-password-generation" value="simple" type="radio" name="password-difficulty" checked={!advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(false) } }/>
       <label htmlFor="advanced-password-generation">Advanced</label>
       <input id="advanced-password-generation" value="advanced" type="radio" name="password-difficulty" checked={advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(true) } }/>
       <span><p id="generated-password">{password}</p><Button onClick={ generatePassword } >Regenerate</Button><Button onClick={copyPasswordToClipboard}>Copy to Clipboard</Button></span>
-    </div>
+    </Box>
   );
 }
 
