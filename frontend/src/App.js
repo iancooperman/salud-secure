@@ -45,7 +45,18 @@ function PasswordGenerator() {
   }, [advancedPasswordComplexity]);
 
   return (
-    <Box className="PasswordGenerator">
+    <Box className="PasswordGenerator"
+      sx={{
+        border: '2px solid black',
+        borderRadius: '10px',
+        width: 500,
+        aspectRatio: 1.618,
+
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around'
+      }}
+    >
       <label htmlFor="simple-password-generation">Simple</label>
       <input id="simple-password-generation" value="simple" type="radio" name="password-difficulty" checked={!advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(false) } }/>
       <label htmlFor="advanced-password-generation">Advanced</label>
