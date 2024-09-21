@@ -62,7 +62,7 @@ function PasswordGenerator() {
           label="Advanced" />
       </FormGroup>
       <div id='password-box'><p id="generated-password">{password}</p></div>
-      <div>
+      <div id='button-section'>
         <PasswordGeneratorButton variant='contained' onClick={ generatePassword } >Regenerate</PasswordGeneratorButton>
         <PasswordGeneratorButton variant='contained' endIcon={<ContentCopyIcon />} onClick={copyPasswordToClipboard}>Copy to Clipboard</PasswordGeneratorButton>
       </div>
@@ -71,8 +71,9 @@ function PasswordGenerator() {
 }
 
 const PasswordGeneratorButton = styled(Button)({
-  backgroundColor: '#F29E29',
+  backgroundColor: '#FD6000',
   textTransform: 'capitalize',
+  width: '45%'
 });
 
 

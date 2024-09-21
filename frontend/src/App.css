@@ -47,7 +47,7 @@
   width: 500px;
   border: 2px solid black;
   border-radius: 20px;
-  background-color: #9D7D4F;
+  background-color: #31B1FF ;
 }
 
 #password-box {
@@ -63,4 +63,9 @@
   height: 20%;
 
   font-size: 30px;
+}
+
+#button-section {
+  display: flex;
+  justify-content: space-between;
 }
