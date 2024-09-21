@@ -46,7 +46,7 @@ function PasswordGenerator() {
       <input id="simple-password-generation" value="simple" type="radio" name="password-difficulty" checked={!advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(false) } }/>
       <label htmlFor="advanced-password-generation">Advanced</label>
       <input id="advanced-password-generation" value="advanced" type="radio" name="password-difficulty" checked={advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(true) } }/>
-      <span><p id="generated-password">{password}</p><Button variantonClick={ generatePassword } >Regenerate</Button><Button onClick={copyPasswordToClipboard}>Copy to Clipboard</Button></span>
+      <span><p id="generated-password">{password}</p><Button onClick={ generatePassword } >Regenerate</Button><Button onClick={copyPasswordToClipboard}>Copy to Clipboard</Button></span>
     </div>
   );
 }
