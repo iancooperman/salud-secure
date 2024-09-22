@@ -32,6 +32,8 @@ function App() {
 
 function PasswordGenerator() {
   const [advancedPasswordComplexity, setAdvancedPasswordComplexity] = useState(true);
+  const [complexityButtonMessage, setComplexityButtonMessage] = useState("It needs to be even simpler.");
+  const [complexityButtonMessageEnum, setComplexityButtonMessageEnum] = useState(1);
   const [password, setPassword] = useState("");
 
   function generatePassword() {
@@ -61,12 +63,12 @@ function PasswordGenerator() {
         flexDirection: 'column',
         justifyContent: 'space-around'
       })}
-    >
-      <FormControl
       >
-        <Switch id="advanced-password-generation" startDecorator={'Simple'} endDecorator={'Advanced'} value="advanced" name="password-difficulty" checked={advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(!advancedPasswordComplexity) } }/
-        >
-      </FormControl>
+      {/* <Switch id="advanced-password-generation" startDecorator={'Simple'} endDecorator={'Advanced'} value="advanced" name="password-difficulty" checked={advancedPasswordComplexity} onChange={ () => { setAdvancedPasswordComplexity(!advancedPasswordComplexity) } }/
+      > */}
+
+      <Button onClick={() => setAdvancedPasswordComplexity(!advancedPasswordComplexity)}
+      >{advancedPasswordComplexity ? "It needs to be even simpler." : "No wait! I like added Security!"}</Button>
 
       
       <span><p id="generated-password">{password}</p><Button onClick={ generatePassword } >Regenerate</Button><Button onClick={copyPasswordToClipboard}>Copy to Clipboard</Button></span>
