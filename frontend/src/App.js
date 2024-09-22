@@ -9,6 +9,10 @@ import Box from '@mui/joy/Box';
 import Switch from '@mui/joy/Switch';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
+import Typography from '@mui/joy/Typography';
+import { CssVarsProvider } from '@mui/joy/styles';
+import CssBaseline from '@mui/joy/CssBaseline';
+import { Container } from '@mui/joy/Container';
 
 
 let zxcvbn = require('zxcvbn');
@@ -18,17 +22,29 @@ ReactGA.initialize('G-SF0WV9T7C1');
 ReactGA.send({ hitType: "pageview", page: "/salud-secure", title: "Salud Secure Load" });
 
 function App() {
-  document.title = "SaludSecure";
-  
-
   return (
-    <div className="App">
-      <h1>SaludSecure</h1>
-      <PasswordGenerator />
-    </div>
+      <div className="App">
+        <CssVarsProvider>
+          <CssBaseline />
+          
+          
+          <Typography level='h1'>{document.title}</Typography>
+          <main>
+            <div>
+              <Container maxWidth="sm">
+                <Typography variant='h2' align="center" color="textPrimary">
+                  Hi
+                </Typography>
+              </Container>
+            </div>
+          </main>
+          {/* <PasswordGenerator /> */}
+        </CssVarsProvider>
+      </div>
   );
-  
+        
 }
+
 
 function PasswordGenerator() {
   const [advancedPasswordComplexity, setAdvancedPasswordComplexity] = useState(true);
