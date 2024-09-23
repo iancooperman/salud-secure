@@ -3,6 +3,8 @@ import ReactGA from "react-ga4";
 import './App.css';
 import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
+import Typography from '@mui/material/Typography';
+
 let zxcvbn = require('zxcvbn');
 
 
@@ -13,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>SaludSecure</h1>
+      <Typography variant="h1">SaludSecure</Typography>
       <PasswordGenerator />
     </div>
   );
