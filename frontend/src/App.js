@@ -12,6 +12,18 @@ ReactGA.send({ hitType: "pageview", page: "/salud-secure", title: "Salud Secure 
 function App() {
   document.title = "SaludSecure";
 
+
+
+  return (
+    <div className="App">
+      <h1>SaludSecure</h1>
+      <PasswordGenerator />
+    </div>
+  );
+}
+
+
+function PasswordGenerator() {
   const [generateStaffPassword, setGenerateStaffPassword] = useState(true);
   const [password, setPassword] = useState("");
 
@@ -30,15 +42,16 @@ function App() {
   }, [generateStaffPassword]);
 
   return (
-    <div className="App">
-      <h1>SaludSecure</h1>
+    <div className='PasswordGenerator'>
       <label htmlFor="simple-password-generation">Simple</label>
       <input id="simple-password-generation" value="simple" type="radio" name="password-difficulty" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
       <label htmlFor="advanced-password-generation">Advanced</label>
       <input id="advanced-password-generation" value="advanced" type="radio" name="password-difficulty" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
       <span><p id="generated-password">{password}</p><button onClick={ generatePassword } >Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
     </div>
+    
   );
+  
 }
 
 
