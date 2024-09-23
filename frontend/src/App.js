@@ -3,7 +3,7 @@ import ReactGA from "react-ga4";
 import './App.css';
 import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
-import Typography from '@mui/material/Typography';
+import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseLine, Grid, Toolbar, Container }from '@mui/material';
 
 let zxcvbn = require('zxcvbn');
 
