@@ -10,9 +10,6 @@ ReactGA.initialize('G-SF0WV9T7C1');
 ReactGA.send({ hitType: "pageview", page: "/salud-secure", title: "Salud Secure Load" });
 
 function App() {
-  document.title = "SaludSecure";
-
-
 
   return (
     <div className="App">
