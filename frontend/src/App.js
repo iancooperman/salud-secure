@@ -3,7 +3,7 @@ import ReactGA from "react-ga4";
 import './App.css';
 import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
-import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container }from '@mui/material';
+import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Button, ButtonGroup, FormControlLabel, Radio, RadioGroup }from '@mui/material';
 
 let zxcvbn = require('zxcvbn');
 
@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <CssBaseline />
-      <Typography variant="h1">
+      <Typography variant="h1" color="textPrimary">
         SaludSecure
       </Typography>
       <main>
@@ -52,11 +52,23 @@ function PasswordGenerator() {
 
   return (
     <div className='PasswordGenerator'>
-      <label htmlFor="simple-password-generation">Simple</label>
-      <input id="simple-password-generation" value="simple" type="radio" name="password-difficulty" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
-      <label htmlFor="advanced-password-generation">Advanced</label>
-      <input id="advanced-password-generation" value="advanced" type="radio" name="password-difficulty" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
-      <span><p id="generated-password">{password}</p><button onClick={ generatePassword } >Regenerate</button><button onClick={copyPasswordToClipboard}>Copy to Clipboard</button></span>
+
+      <RadioGroup
+        aria-labelledby="password-difficulty-radio-buttons-group-label"
+        defaultValue="advanced"
+        name="password-difficulty-radio-buttons-group"
+      >
+        <FormControlLabel id="simple-password-generation" value="simple" control={ <Radio />} label="Simple" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
+        <FormControlLabel id="advanced-password-generation" value="advanced" control={<Radio />} label="Advanced" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
+      </RadioGroup>
+      <Typography id="generated-password" variant='body1'>{password}</Typography>
+      <span>
+        <ButtonGroup variant='contained' aria-label='Basic button group'>
+          <Button variant='contained' color='primary' onClick={ generatePassword } >Regenerate</Button>
+          <Button variant='contained' color='primary' onClick={copyPasswordToClipboard}>Copy to Clipboard</Button>
+        </ButtonGroup>
+       
+      </span>
     </div>
     
   );
