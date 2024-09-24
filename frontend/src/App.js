@@ -3,7 +3,7 @@ import ReactGA from "react-ga4";
 import './App.css';
 import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
-import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseLine, Grid, Toolbar, Container }from '@mui/material';
+import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container }from '@mui/material';
 
 let zxcvbn = require('zxcvbn');
 
@@ -15,8 +15,18 @@ function App() {
 
   return (
     <div className="App">
-      <Typography variant="h1">SaludSecure</Typography>
-      <PasswordGenerator />
+      <CssBaseline />
+      <Typography variant="h1">
+        SaludSecure
+      </Typography>
+      <main>
+        <div>
+          <Container>
+            <PasswordGenerator />
+          </Container>
+        </div>
+        
+      </main>
     </div>
   );
 }
