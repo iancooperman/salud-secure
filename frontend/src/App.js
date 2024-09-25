@@ -52,25 +52,30 @@ function PasswordGenerator() {
 
   return (
     <div className='PasswordGenerator'>
-      <FormControl>
-        <RadioGroup
-          row
-          aria-labelledby="password-difficulty-radio-buttons-group-label"
-          defaultValue="advanced"
-          name="password-difficulty-radio-buttons-group"
-        >
-          <FormControlLabel id="simple-password-generation" value="simple" control={ <Radio />} label="Simple" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
-          <FormControlLabel id="advanced-password-generation" value="advanced" control={<Radio />} label="Advanced" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
-        </RadioGroup>
-      </FormControl>
-      <Typography id="generated-password" variant='body1'>{password}</Typography>
-      <span>
+      <Card variant='outlined' style={{ 
+        height: 250,
+        aspectRatio: 1.618
+      }}>
+        <CardContent>
+          <FormControl>
+            <RadioGroup
+              row
+              aria-labelledby="password-difficulty-radio-buttons-group-label"
+              defaultValue="advanced"
+              name="password-difficulty-radio-buttons-group"
+            >
+              <FormControlLabel id="simple-password-generation" value="simple" control={ <Radio />} label="Simple" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
+              <FormControlLabel id="advanced-password-generation" value="advanced" control={<Radio />} label="Advanced" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
+            </RadioGroup>
+          </FormControl>
+        </CardContent>
+        <Typography id="generated-password" variant='body1'>{password}</Typography>
         <ButtonGroup variant='contained' aria-label='Basic button group'>
           <Button variant='contained' color='primary' onClick={ generatePassword } >Regenerate</Button>
           <Button variant='contained' color='primary' onClick={copyPasswordToClipboard}>Copy to Clipboard</Button>
         </ButtonGroup>
-       
-      </span>
+      </Card>
+      
     </div>
     
   );
