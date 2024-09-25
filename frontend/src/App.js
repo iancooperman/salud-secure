@@ -3,7 +3,8 @@ import ReactGA from "react-ga4";
 import './App.css';
 import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
-import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Button, ButtonGroup, FormControlLabel, Radio, RadioGroup, FormControl }from '@mui/material';
+import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup, FormControlLabel, Radio, RadioGroup, FormControl }from '@mui/material';
+import Grid from '@mui/material/Grid2';
 
 let zxcvbn = require('zxcvbn');
 
@@ -22,7 +23,17 @@ function App() {
       <main>
         <div>
           <Container>
-            <PasswordGenerator />
+            <Grid container spacing={2}>
+              <Grid size={3}>
+                {/* purposely left blank for the moment */}
+              </Grid>
+              <Grid size={6}>
+                <PasswordGenerator />
+              </Grid>
+              <Grid size={3}>
+                {/* purposely left blank for the moment */}
+              </Grid>
+            </Grid>
           </Container>
         </div>
         
@@ -53,27 +64,29 @@ function PasswordGenerator() {
   return (
     <div className='PasswordGenerator'>
       <Card variant='outlined' style={{ 
-        height: 250,
+        // height: 250,
         aspectRatio: 1.618
       }}>
-        <CardContent>
-          <FormControl>
-            <RadioGroup
-              row
-              aria-labelledby="password-difficulty-radio-buttons-group-label"
-              defaultValue="advanced"
-              name="password-difficulty-radio-buttons-group"
-            >
-              <FormControlLabel id="simple-password-generation" value="simple" control={ <Radio />} label="Simple" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
-              <FormControlLabel id="advanced-password-generation" value="advanced" control={<Radio />} label="Advanced" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
-            </RadioGroup>
-          </FormControl>
-        </CardContent>
-        <Typography id="generated-password" variant='body1'>{password}</Typography>
-        <ButtonGroup variant='contained' aria-label='Basic button group'>
-          <Button variant='contained' color='primary' onClick={ generatePassword } >Regenerate</Button>
-          <Button variant='contained' color='primary' onClick={copyPasswordToClipboard}>Copy to Clipboard</Button>
-        </ButtonGroup>
+        <Grid container="" spacing={2}>
+          <CardContent>
+            <FormControl>
+              <RadioGroup
+                row
+                aria-labelledby="password-difficulty-radio-buttons-group-label"
+                defaultValue="advanced"
+                name="password-difficulty-radio-buttons-group"
+              >
+                <FormControlLabel id="simple-password-generation" value="simple" control={ <Radio />} label="Simple" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
+                <FormControlLabel id="advanced-password-generation" value="advanced" control={<Radio />} label="Advanced" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
+              </RadioGroup>
+            </FormControl>
+          </CardContent>
+          <Typography id="generated-password" variant='body1'>{password}</Typography>
+          <ButtonGroup variant='contained' aria-label='Basic button group'>
+            <Button variant='contained' color='primary' onClick={ generatePassword } >Regenerate</Button>
+            <Button variant='contained' color='primary' onClick={copyPasswordToClipboard}>Copy to Clipboard</Button>
+          </ButtonGroup>
+        </Grid>
       </Card>
       
     </div>
