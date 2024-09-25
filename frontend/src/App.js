@@ -3,7 +3,7 @@ import ReactGA from "react-ga4";
 import './App.css';
 import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
-import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Button, ButtonGroup, FormControlLabel, Radio, RadioGroup }from '@mui/material';
+import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Button, ButtonGroup, FormControlLabel, Radio, RadioGroup, FormControl }from '@mui/material';
 
 let zxcvbn = require('zxcvbn');
 
@@ -52,15 +52,17 @@ function PasswordGenerator() {
 
   return (
     <div className='PasswordGenerator'>
-
-      <RadioGroup
-        aria-labelledby="password-difficulty-radio-buttons-group-label"
-        defaultValue="advanced"
-        name="password-difficulty-radio-buttons-group"
-      >
-        <FormControlLabel id="simple-password-generation" value="simple" control={ <Radio />} label="Simple" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
-        <FormControlLabel id="advanced-password-generation" value="advanced" control={<Radio />} label="Advanced" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
-      </RadioGroup>
+      <FormControl>
+        <RadioGroup
+          row
+          aria-labelledby="password-difficulty-radio-buttons-group-label"
+          defaultValue="advanced"
+          name="password-difficulty-radio-buttons-group"
+        >
+          <FormControlLabel id="simple-password-generation" value="simple" control={ <Radio />} label="Simple" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
+          <FormControlLabel id="advanced-password-generation" value="advanced" control={<Radio />} label="Advanced" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
+        </RadioGroup>
+      </FormControl>
       <Typography id="generated-password" variant='body1'>{password}</Typography>
       <span>
         <ButtonGroup variant='contained' aria-label='Basic button group'>
