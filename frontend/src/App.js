@@ -96,6 +96,12 @@ function PasswordGenerator() {
           <TextField 
             id="generated-password" 
             value={password}
+            // style={{ width: '80%' }}
+            inputProps={{
+              style: {
+                textAlign: 'center',
+              }
+            }}
             slotProps={{
               input: {
                 readOnly: true,
