@@ -91,7 +91,7 @@ function PasswordGenerator() {
               textTransform: 'none'
             }} 
             onClick={() => setGenerateAdvancedPasswords(!generateAdvancedPasswords)}>
-              {generateAdvancedPasswords ? "It needs to be even simpler." : "No wait! I like added security!" }
+              {generateAdvancedPasswords ? '"It needs to be even simpler."' : '"No wait! I like added security!"' }
             </Button>
           <TextField 
             id="generated-password" 
