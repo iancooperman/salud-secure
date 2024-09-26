@@ -63,7 +63,8 @@ function PasswordGenerator() {
 
   return (
     <div className='PasswordGenerator'>
-      <Card variant='outlined' style={{ 
+      <Card  sx={{ 
+        backgroundColor: 'primary.secondary',
         minWidth: 300,
         aspectRatio: 1.618
       }}>
