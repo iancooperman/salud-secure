@@ -44,12 +44,12 @@ function App() {
 
 
 function PasswordGenerator() {
-  const [generateStaffPassword, setGenerateStaffPassword] = useState(true);
+  const [generateAdvancedPasswords, setGenerateAdvancedPasswords] = useState(true);
   const [password, setPassword] = useState("");
 
   function generatePassword() {
     console.log("run");
-    if (generateStaffPassword) {
+    if (generateAdvancedPasswords) {
       setPassword(randomAcceptableStaffPassword());
     }
     else {
@@ -59,7 +59,7 @@ function PasswordGenerator() {
 
   useEffect(() => {
     generatePassword();
-  }, [generateStaffPassword]);
+  }, [generateAdvancedPasswords]);
 
   return (
     <div className='PasswordGenerator'>
@@ -76,7 +76,7 @@ function PasswordGenerator() {
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
-            <FormControl>
+            {/* <FormControl>
               <RadioGroup
                 row
                 aria-labelledby="password-difficulty-radio-buttons-group-label"
@@ -86,7 +86,13 @@ function PasswordGenerator() {
                 <FormControlLabel id="simple-password-generation" value="simple" control={ <Radio />} label="Simple" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
                 <FormControlLabel id="advanced-password-generation" value="advanced" control={<Radio />} label="Advanced" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
               </RadioGroup>
-            </FormControl>
+            </FormControl> */}
+            <Button sx={{
+              textTransform: 'none'
+            }} 
+            onClick={() => setGenerateAdvancedPasswords(!generateAdvancedPasswords)}>
+              {generateAdvancedPasswords ? "It needs to be even simpler." : "No wait! I like added security!" }
+            </Button>
           <Typography id="generated-password" variant='body1'>{password}</Typography>
           </CardContent>
           <CardActions sx={{
