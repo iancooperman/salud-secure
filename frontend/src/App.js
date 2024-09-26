@@ -3,7 +3,7 @@ import ReactGA from "react-ga4";
 import './App.css';
 import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
-import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup, FormControlLabel, Radio, RadioGroup, FormControl }from '@mui/material';
+import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup, FormControlLabel, Radio, RadioGroup, FormControl, TextField }from '@mui/material';
 import Grid from '@mui/material/Grid2';
 
 let zxcvbn = require('zxcvbn');
@@ -93,7 +93,15 @@ function PasswordGenerator() {
             onClick={() => setGenerateAdvancedPasswords(!generateAdvancedPasswords)}>
               {generateAdvancedPasswords ? "It needs to be even simpler." : "No wait! I like added security!" }
             </Button>
-          <Typography id="generated-password" variant='body1'>{password}</Typography>
+          <TextField 
+            id="generated-password" 
+            value={password}
+            slotProps={{
+              input: {
+                readOnly: true,
+              },
+            }} 
+          />
           </CardContent>
           <CardActions sx={{
             height: '40%',
