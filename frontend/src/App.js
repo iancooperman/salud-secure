@@ -64,11 +64,17 @@ function PasswordGenerator() {
   return (
     <div className='PasswordGenerator'>
       <Card variant='outlined' style={{ 
-        // height: 250,
+        minWidth: 300,
         aspectRatio: 1.618
       }}>
-        <Grid container="" spacing={2}>
-          <CardContent>
+          <CardContent sx={{
+            height: '60%',
+            // backgroundColor: 'skyblue',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
             <FormControl>
               <RadioGroup
                 row
@@ -80,13 +86,19 @@ function PasswordGenerator() {
                 <FormControlLabel id="advanced-password-generation" value="advanced" control={<Radio />} label="Advanced" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
               </RadioGroup>
             </FormControl>
-          </CardContent>
           <Typography id="generated-password" variant='body1'>{password}</Typography>
-          <ButtonGroup variant='contained' aria-label='Basic button group'>
-            <Button variant='contained' color='primary' onClick={ generatePassword } >Regenerate</Button>
-            <Button variant='contained' color='primary' onClick={copyPasswordToClipboard}>Copy to Clipboard</Button>
-          </ButtonGroup>
-        </Grid>
+          </CardContent>
+          <CardActions sx={{
+            height: '40%',
+            // backgroundColor: 'green',
+            display: 'flex',
+            justifyContent: 'center',
+          }}>
+            <ButtonGroup variant='contained' aria-label='Basic button group'>
+              <Button variant='contained' color='primary' onClick={ generatePassword } >Regenerate</Button>
+              <Button variant='contained' color='primary' onClick={copyPasswordToClipboard}>Copy to Clipboard</Button>
+            </ButtonGroup>
+          </CardActions>
       </Card>
       
     </div>
