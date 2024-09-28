@@ -3,7 +3,7 @@ import ReactGA from "react-ga4";
 import './App.css';
 import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
-import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup, FormControlLabel, Radio, RadioGroup, FormControl, TextField }from '@mui/material';
+import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup, FormControlLabel, Radio, RadioGroup, FormControl, TextField, Box }from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import RefreshIcon from '@mui/icons-material/Refresh';
@@ -78,51 +78,54 @@ function PasswordGenerator() {
         minWidth: 300,
         aspectRatio: 1.618
       }}>
-          <CardContent sx={{
-            height: '60%',
+        <CardContent sx={{
+            height: '75%',
             // backgroundColor: 'skyblue',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
-            <Button sx={{
-              textTransform: 'none',
-              textDecoration: 'underline',
-              '&:hover': {
+            <Typography>Generate a simple (but usable) password.</Typography>
+          <Box>
+            <TextField
+              id="generated-password"
+              value={password}
+              // style={{ width: '80%' }}
+              inputProps={{
+                style: {
+                  textAlign: 'center',
+                }
+              }}
+              slotProps={{
+                input: {
+                  readOnly: true,
+                },
+              }}
+            />
+            <Button size='small' sx={{
+                textTransform: 'none',
                 textDecoration: 'underline',
-              }
-            }} 
-            onClick={() => setGenerateAdvancedPasswords(!generateAdvancedPasswords)}>
-              {generateAdvancedPasswords ? '"It needs to be even simpler."' : '"No wait! I like added security!"' }
-            </Button>
-          <TextField 
-            id="generated-password" 
-            value={password}
-            // style={{ width: '80%' }}
-            inputProps={{
-              style: {
-                textAlign: 'center',
-              }
-            }}
-            slotProps={{
-              input: {
-                readOnly: true,
-              },
-            }} 
-          />
-          </CardContent>
-          <CardActions sx={{
-            height: '40%',
+                '&:hover': {
+                  textDecoration: 'underline',
+                }
+              }}
+              onClick={() => setGenerateAdvancedPasswords(!generateAdvancedPasswords)}>
+                {generateAdvancedPasswords ? '"It needs to be even simpler."' : '"No wait! I like added security!"' }
+              </Button>
+          </Box>
+        </CardContent>
+        <CardActions sx={{
+            height: '25%',
             // backgroundColor: 'green',
             display: 'flex',
             justifyContent: 'center',
-          }}>
-            <ButtonGroup variant='contained' aria-label='Basic button group'>
-              <Button variant='contained' color='primary' onClick={ generatePassword } endIcon={<RefreshIcon />}>Regenerate</Button>
-              <Button variant='contained' color='primary' onClick={copyPasswordToClipboard} endIcon={<ContentCopyIcon />}>Copy to Clipboard  </Button>
-            </ButtonGroup>
-          </CardActions>
+        }}>
+          <ButtonGroup variant='contained' aria-label='Basic button group'>
+            <Button variant='contained' color='primary' onClick={ generatePassword } endIcon={<RefreshIcon />}>Regenerate</Button>
+            <Button variant='contained' color='primary' onClick={copyPasswordToClipboard} endIcon={<ContentCopyIcon />}>Copy to Clipboard  </Button>
+          </ButtonGroup>
+        </CardActions>
       </Card>
       
     </div>
