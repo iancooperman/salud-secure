@@ -75,7 +75,7 @@ function PasswordGenerator() {
     <div className='PasswordGenerator'>
       <Card  sx={{ 
         backgroundColor: 'primary.secondary',
-        minWidth: 300,
+        minHeight: 234,
         aspectRatio: 1.618
       }}>
         <CardContent sx={{
@@ -91,6 +91,7 @@ function PasswordGenerator() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
+            width: '90%',
           }}>
             <TextField
               id="generated-password"
