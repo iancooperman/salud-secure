@@ -79,15 +79,19 @@ function PasswordGenerator() {
         aspectRatio: 1.618
       }}>
         <CardContent sx={{
-            height: '75%',
+            height: '100%',
             // backgroundColor: 'skyblue',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'space-between',
+            justifyContent: 'space-around',
             alignItems: 'center',
           }}>
-            <Typography>Generate a simple (but usable) password.</Typography>
-          <Box>
+            <Typography variant='h5'>Generate a simple (but usable) password.</Typography>
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}>
             <TextField
               id="generated-password"
               value={password}
@@ -114,18 +118,11 @@ function PasswordGenerator() {
                 {generateAdvancedPasswords ? '"It needs to be even simpler."' : '"No wait! I like added security!"' }
               </Button>
           </Box>
-        </CardContent>
-        <CardActions sx={{
-            height: '25%',
-            // backgroundColor: 'green',
-            display: 'flex',
-            justifyContent: 'center',
-        }}>
           <ButtonGroup variant='contained' aria-label='Basic button group'>
             <Button variant='contained' color='primary' onClick={ generatePassword } endIcon={<RefreshIcon />}>Regenerate</Button>
             <Button variant='contained' color='primary' onClick={copyPasswordToClipboard} endIcon={<ContentCopyIcon />}>Copy to Clipboard  </Button>
           </ButtonGroup>
-        </CardActions>
+        </CardContent>
       </Card>
       
     </div>
