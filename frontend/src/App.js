@@ -85,17 +85,6 @@ function PasswordGenerator() {
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
-            {/* <FormControl>
-              <RadioGroup
-                row
-                aria-labelledby="password-difficulty-radio-buttons-group-label"
-                defaultValue="advanced"
-                name="password-difficulty-radio-buttons-group"
-              >
-                <FormControlLabel id="simple-password-generation" value="simple" control={ <Radio />} label="Simple" checked={!generateStaffPassword} onChange={ () => { setGenerateStaffPassword(false) } }/>
-                <FormControlLabel id="advanced-password-generation" value="advanced" control={<Radio />} label="Advanced" checked={generateStaffPassword} onChange={ () => { setGenerateStaffPassword(true) } }/>
-              </RadioGroup>
-            </FormControl> */}
             <Button sx={{
               textTransform: 'none'
             }} 
