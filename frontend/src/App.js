@@ -86,7 +86,11 @@ function PasswordGenerator() {
             alignItems: 'center',
           }}>
             <Button sx={{
-              textTransform: 'none'
+              textTransform: 'none',
+              textDecoration: 'underline',
+              '&:hover': {
+                textDecoration: 'underline',
+              }
             }} 
             onClick={() => setGenerateAdvancedPasswords(!generateAdvancedPasswords)}>
               {generateAdvancedPasswords ? '"It needs to be even simpler."' : '"No wait! I like added security!"' }
