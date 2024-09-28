@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { generateSlug } from 'random-word-slugs';
 import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Toolbar, Container, Button, ButtonGroup, FormControlLabel, Radio, RadioGroup, FormControl, TextField }from '@mui/material';
 import Grid from '@mui/material/Grid2';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 let zxcvbn = require('zxcvbn');
 
@@ -117,7 +118,7 @@ function PasswordGenerator() {
           }}>
             <ButtonGroup variant='contained' aria-label='Basic button group'>
               <Button variant='contained' color='primary' onClick={ generatePassword } >Regenerate</Button>
-              <Button variant='contained' color='primary' onClick={copyPasswordToClipboard}>Copy to Clipboard</Button>
+              <Button variant='contained' color='primary' onClick={copyPasswordToClipboard} endIcon={<ContentCopyIcon />}>Copy to Clipboard  </Button>
             </ButtonGroup>
           </CardActions>
       </Card>
