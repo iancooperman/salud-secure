@@ -58,6 +58,14 @@ function PasswordGenerator() {
     }
   }
 
+  async function copyPasswordToClipboard() {
+    navigator.clipboard.writeText(password).then(() => {
+      if (!isUserOnAndroid()) { // exclude android because android has its own toast message for this
+        alert("Copied to clipboard.");
+      }
+    });
+  }
+
   useEffect(() => {
     generatePassword();
   }, [generateAdvancedPasswords]);
@@ -221,15 +229,6 @@ function replacePassword() {
   generatedPassword.innerText = randomAcceptableStudentPassword();
 }
 
-function copyPasswordToClipboard() {
-  let generatedPassword = document.getElementById("generated-password");
-  navigator.clipboard.writeText(generatedPassword.innerText).then(() => {
-    if (!isUserOnAndroid()) { // exclude android because android has its own toast message for this
-      alert("Copied to clipboard.");
-    }
-  });
-  
-}
 
 function isUserOnAndroid() {
   return /Android/i.test(navigator.userAgent);
