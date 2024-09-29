@@ -39,6 +39,7 @@ function App() {
               </Grid>
             </Grid>
           </Container>
+          <hr></hr>
           <Footer />
         </div>
         
@@ -51,7 +52,13 @@ function Footer() {
 
   return (
     <footer>
-      <Container>
+      <Container sx={{
+        minHeight: '200px',
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
         <KoFiButton id='iancooperman'></KoFiButton>
       </Container>
     </footer>
