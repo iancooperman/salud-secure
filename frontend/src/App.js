@@ -37,11 +37,23 @@ function App() {
               </Grid>
             </Grid>
           </Container>
+          <Footer />
         </div>
         
       </main>
     </div>
   );
+}
+
+function Footer() {
+
+  return (
+    <Container>
+
+
+
+    </Container>
+  )
 }
 
 
