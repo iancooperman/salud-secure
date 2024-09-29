@@ -50,11 +50,11 @@ function App() {
 function Footer() {
 
   return (
-    <Container>
-      <KoFiButton id='iancooperman'></KoFiButton>
-
-
-    </Container>
+    <footer>
+      <Container>
+        <KoFiButton id='iancooperman'></KoFiButton>
+      </Container>
+    </footer>
   )
 }
 
