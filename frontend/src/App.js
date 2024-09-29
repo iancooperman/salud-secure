@@ -7,6 +7,8 @@ import { Typography, Card, CardActions, CardContent, CardMedia, CssBaseline, Too
 import Grid from '@mui/material/Grid2';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import { KoFiDialog, KoFiButton, KoFiWidget, KoFiPanel } from "react-kofi";
+import "react-kofi/dist/styles.css";
 
 let zxcvbn = require('zxcvbn');
 
@@ -49,7 +51,7 @@ function Footer() {
 
   return (
     <Container>
-
+      <KoFiButton id='iancooperman'></KoFiButton>
 
 
     </Container>
