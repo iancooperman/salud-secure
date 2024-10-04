@@ -21,7 +21,17 @@ function App() {
   return (
     <div className="App">
       <CssBaseline />
-      <Typography variant="h1" color="textPrimary">
+      <Content />
+      <hr></hr>    
+      <Footer />
+    </div>
+  );
+}
+
+function Content() {
+  return (
+    <div className="Content">
+       <Typography variant="h1" color="textPrimary">
         SaludSecure
       </Typography>
       <main>
@@ -39,17 +49,13 @@ function App() {
               </Grid>
             </Grid>
           </Container>
-          <hr></hr>
-          <Footer />
-        </div>
-        
-      </main>
+          </div>
+          </main>
     </div>
   );
 }
 
 function Footer() {
-
   return (
     <footer>
       <Container sx={{
