@@ -21,8 +21,7 @@ function App() {
   return (
     <div className="App">
       <CssBaseline />
-      <Content />
-      <hr></hr>    
+      <Content /> 
       <Footer />
     </div>
   );
@@ -57,7 +56,13 @@ function Content() {
 
 function Footer() {
   return (
-    <footer>
+    <footer style={{
+      position: 'absolute',
+      left: 0,
+      bottom: 0,
+      right: 0,
+    }}>
+      <hr></hr>   
       <Container sx={{
         minHeight: '200px',
         height: '100%',
