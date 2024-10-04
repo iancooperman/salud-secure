@@ -56,10 +56,16 @@ function Footer() {
         minHeight: '200px',
         height: '100%',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-        <KoFiButton id='iancooperman'></KoFiButton>
+        <KoFiButton id='iancooperman' />
+        <Typography
+          sx={{
+            marginTop: '5px',
+          }}
+        >Your contribution will always be appreciated, but will never be necessary.</Typography>
       </Container>
     </footer>
   )
