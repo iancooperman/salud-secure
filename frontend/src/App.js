@@ -19,9 +19,17 @@ ReactGA.send({ hitType: "pageview", page: "/salud-secure", title: "Salud Secure 
 function App() {
 
   return (
-    <div className="App">
+    <div className="App"
+      style={{
+        paddingBottom: '60px',
+      }}
+    >
       <CssBaseline />
-      <Content /> 
+      <Content 
+        sx={{
+          minHeight: '100vh',
+        }}
+      /> 
       <Footer />
     </div>
   );
