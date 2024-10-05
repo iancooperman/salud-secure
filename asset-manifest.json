@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/salud-secure/static/css/main.f855e6bc.css",
-    "main.js": "/salud-secure/static/js/main.67806aba.js",
+    "main.css": "/salud-secure/static/css/main.0be67780.css",
+    "main.js": "/salud-secure/static/js/main.cf88b690.js",
     "static/js/453.8ab44547.chunk.js": "/salud-secure/static/js/453.8ab44547.chunk.js",
     "static/media/logo.svg": "/salud-secure/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/salud-secure/index.html",
-    "main.f855e6bc.css.map": "/salud-secure/static/css/main.f855e6bc.css.map",
-    "main.67806aba.js.map": "/salud-secure/static/js/main.67806aba.js.map",
+    "main.0be67780.css.map": "/salud-secure/static/css/main.0be67780.css.map",
+    "main.cf88b690.js.map": "/salud-secure/static/js/main.cf88b690.js.map",
     "453.8ab44547.chunk.js.map": "/salud-secure/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.67806aba.js"
+    "static/css/main.0be67780.css",
+    "static/js/main.cf88b690.js"
   ]
 }
