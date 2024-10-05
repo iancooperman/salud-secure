@@ -254,7 +254,7 @@ function randomAcceptableStudentPassword() {
   //   - Cannot contain username or email
 
   while (true) {
-    let password = randomStudentPassword();
+    let password = randomStudentPassword().toLowerCase(); // making the generated password lowercase because capital letters are too hard for kids somehow
     if (password.length >= 8 && password.length <= 20) {
       if (zxcvbn(password).score >=3) {
         return password;
