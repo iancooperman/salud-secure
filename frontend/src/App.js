@@ -253,14 +253,35 @@ function randomAcceptableStudentPassword() {
   //   - Cannot be commonly used passwords (i.e. must be at least fairly strong, as judged by zxcvbn)
   //   - Cannot contain username or email
 
-  while (true) {
-    let password = randomStudentPassword().toLowerCase(); // making the generated password lowercase because capital letters are too hard for kids somehow
+  let studentBannedWords = [
+    "barista",
+    "plump",
+    "tinkling",
+    "wet",
+    "brown",
+    "black",
+    "knife",
+    "army",
+    "mealy",
+    "dead",
+    "putrid",
+    "nigeria"
+  ];
+
+  let password;
+  let done = false;
+  while (!done) {
+    password = randomStudentPassword().toLowerCase(); // making the generated password lowercase because capital letters are too hard for kids somehow
     if (password.length >= 8 && password.length <= 20) {
-      if (zxcvbn(password).score >=3) {
-        return password;
+      if (zxcvbn(password).score >=4) {
+        if (!studentBannedWords.some((word) => password.toLowerCase().includes(word))) {
+          done = true;
+        }
       }
     }
   }
+
+  return password;
 
 }
 
