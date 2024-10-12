@@ -16,6 +16,15 @@ let zxcvbn = require('zxcvbn');
 ReactGA.initialize('G-SF0WV9T7C1');
 ReactGA.send({ hitType: "pageview", page: "/salud-secure", title: "Salud Secure Load" });
 
+let BANNED_WORDS = [
+  "black",
+  "brown",
+  "repulsive",
+  "nigeria",
+  "appalling",
+  "china"
+];
+
 function App() {
 
   return (
@@ -235,14 +244,20 @@ function randomStudentPassword() {
 }
 
 function randomAcceptableStaffPassword() {
-  while (true) {
-    let password = randomStaffPassword();
+  let password;
+  let done = false;
+  while (!done) {
+    password = randomStaffPassword();
     if (password.length >= 15 && password.length <= 20) {
       if (zxcvbn(password).score >=3) {
-        return password;
+        if (!BANNED_WORDS.some((word) => password.toLowerCase().includes(word))) {
+          done = true;
+        }
       }
     }
   }
+  
+  return password;
 }
 
 function randomAcceptableStudentPassword() {
@@ -274,7 +289,7 @@ function randomAcceptableStudentPassword() {
     password = randomStudentPassword().toLowerCase(); // making the generated password lowercase because capital letters are too hard for kids somehow
     if (password.length >= 8 && password.length <= 20) {
       if (zxcvbn(password).score >=4) {
-        if (!studentBannedWords.some((word) => password.toLowerCase().includes(word))) {
+        if (!studentBannedWords.some((word) => password.toLowerCase().includes(word)) && !BANNED_WORDS.some((word) => password.toLowerCase().includes(word))) { // using two different banned words lists, one specifically for students and one global
           done = true;
         }
       }
