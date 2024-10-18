@@ -97,6 +97,7 @@ function Footer() {
             marginTop: '5px',
           }}
         >Your contribution will always be appreciated, but will never be necessary.</Typography>
+        <a href='mailto:ian.pl.cooperman@gmail.com?subject=SaludSecure'><Typography>Email me feedback!</Typography></a>
       </Container>
     </footer>
   )
