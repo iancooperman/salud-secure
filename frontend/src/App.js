@@ -30,13 +30,16 @@ function App() {
   return (
     <div className="App"
       style={{
-        paddingBottom: '60px',
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        justifyContent: 'space-between'
       }}
     >
       <CssBaseline />
       <Content 
         sx={{
-          minHeight: '100vh',
+          flex: 1,
         }}
       /> 
       <Footer />
@@ -74,7 +77,7 @@ function Content() {
 function Footer() {
   return (
     <footer style={{
-      position: 'absolute',
+      // position: 'absolute',
       left: 0,
       bottom: 0,
       right: 0,
