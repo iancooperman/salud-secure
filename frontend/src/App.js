@@ -68,8 +68,23 @@ function Content() {
               </Grid>
             </Grid>
           </Container>
+          <Container>
+            <About />
+          </Container>
           </div>
           </main>
+    </div>
+  );
+}
+
+function About() {
+
+  return (
+    <div className='About'>
+      <Typography variant='h3'>About</Typography>
+      <Typography>SaludSecure was born out of the desire to simplify password creation, in the face of increasingly arbitrary compLexity requirements imposed by a certain school-adjacent organization. As soon as the requirements were unveiled, the author immediately knew that they would be way too hard for most of his non-IT peers to pass. Especially the too vauge requirement that inputted passwords must not be "common". In their stupidity, they lacked the foresight that this requirement would lead their underlings to be confused and frustrated to no end.
+         SaludSecure comes to the rescure by creating passwords that are guarenteed* to pass even the stupidest of scrutiny, while still being simple enough for even the dimmest among us to remember (I hope).</Typography>
+         <Typography>*passing password not guaranteed.</Typography>
     </div>
   );
 }
