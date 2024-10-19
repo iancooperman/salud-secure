@@ -80,11 +80,48 @@ function Content() {
 function About() {
 
   return (
-    <div className='About'>
-      <Typography variant='h3'>About</Typography>
-      <Typography>SaludSecure was born out of the desire to simplify password creation, in the face of increasingly arbitrary compLexity requirements imposed by a certain school-adjacent organization. As soon as the requirements were unveiled, the author immediately knew that they would be way too hard for most of his non-IT peers to pass. Especially the too vauge requirement that inputted passwords must not be "common". In their stupidity, they lacked the foresight that this requirement would lead their underlings to be confused and frustrated to no end.
-         SaludSecure comes to the rescure by creating passwords that are guarenteed* to pass even the stupidest of scrutiny, while still being simple enough for even the dimmest among us to remember (I hope).</Typography>
-         <Typography>*passing password not guaranteed.</Typography>
+    <div className='About' sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+    }}>
+      <Typography variant='h3' style={{
+        marginBottom: '5px'
+      }}>
+        About</Typography>
+      <Typography style={{
+        marginBottom: '5px'
+      }}
+      align='left'
+      >
+        SaludSecure was born out of a desire to lend a helping hand in simplifying password creation, amidst the increasingly complex requirements imposed by a certain unesteemed, school-adjacent organization. As soon as the requirements were unveiled, the author of this site knew they might be a bit of a stretch for his non-IT peers to master.
+      </Typography>
+        
+        <Typography style={{
+        marginBottom: '5px'
+      }}
+      align='left'
+      >
+        The requirement that new passwords must not be "common" left many feeling anxious, unsure about what to do after their otherwise good-enough password was rejected for being too "common", and asking for a simpler solution.
+      </ Typography>
+        
+        <Typography style={{
+        marginBottom: '5px'
+      }} 
+      align='left'
+      >
+        And as though that weren't bad enough, the author of this site was placed in the middle of the password conundrum, expected to answer for why everyone's new passwords weren't working.</Typography>
+        
+        <Typography style={{
+        marginBottom: '5px'
+      }} 
+      align='left'
+      >
+        SaludSecure saves the day by generating passwords that are guaranteed* to not result in any red Xs, while still being straightforward enough to remember. And, with a bit of luck, even the most digitally-challenged individuals can use them with ease.</Typography>
+        <Typography style={{
+        marginBottom: '5px',
+        fontSize: '8px'
+      }}>*passing password not guaranteed.</Typography>
     </div>
   );
 }
