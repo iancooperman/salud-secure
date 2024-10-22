@@ -104,14 +104,6 @@ function About() {
       >
         The requirement that new passwords must not be "common" left many feeling anxious, unsure about what to do after their otherwise good-enough password was rejected for being too "common", and asking for a simpler solution.
       </ Typography>
-        
-        <Typography style={{
-        marginBottom: '5px'
-      }} 
-      align='left'
-      >
-        And as though that weren't bad enough, the author of this site was placed in the middle of the password conundrum, expected to answer for why everyone's new passwords weren't working.</Typography>
-        
         <Typography style={{
         marginBottom: '5px'
       }} 
