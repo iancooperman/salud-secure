@@ -33,15 +33,16 @@ function App() {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        background: 'linear-gradient(135deg, #009fe2 0%, #0077b3 100%)',
       }}
     >
       <CssBaseline />
-      <Content 
+      <Content
         sx={{
           flex: 1,
         }}
-      /> 
+      />
       <Footer />
     </div>
   );
@@ -50,25 +51,25 @@ function App() {
 function Content() {
   return (
     <div className="Content">
-       <Typography variant="h1" color="textPrimary">
+       <Typography
+        variant="h1"
+        sx={{
+          color: 'white',
+          fontWeight: 700,
+          textShadow: '0 2px 10px rgba(0,0,0,0.2)',
+          marginTop: { xs: 3, md: 5 },
+          marginBottom: { xs: 3, md: 5 },
+          fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' }
+        }}
+      >
         SaludSecure
       </Typography>
       <main>
         <div>
-          <Container>
-            <Grid container spacing={2}>
-              <Grid size={3}>
-                {/* purposely left blank for the moment */}
-              </Grid>
-              <Grid size={6}>
-                <PasswordGenerator />
-              </Grid>
-              <Grid size={3}>
-                {/* purposely left blank for the moment */}
-              </Grid>
-            </Grid>
+          <Container maxWidth="md" sx={{ px: { xs: 2, sm: 3 } }}>
+            <PasswordGenerator />
           </Container>
-          <Container>
+          <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 }, mt: 4 }}>
             <About />
           </Container>
           </div>
@@ -87,32 +88,57 @@ function About() {
 
 
   return (
-    <div className='About' sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
+    <Box className='About' sx={{
+      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+      borderRadius: 3,
+      padding: { xs: 3, md: 4 },
+      boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
     }}>
 
-    <Typography variant='h3' sx={{ marginBottom: '5px' }}>About</Typography>
-      {paragraphs.map((paragraph) => <Typography key={paragraph} sx={{ marginBottom: '5px' }}>{paragraph}</Typography>)}
+    <Typography
+      variant='h3'
+      sx={{
+        marginBottom: 2,
+        fontWeight: 600,
+        fontSize: { xs: '1.75rem', md: '2.5rem' },
+        color: '#009fe2'
+      }}
+    >
+      About
+    </Typography>
+      {paragraphs.map((paragraph) => (
+        <Typography
+          key={paragraph}
+          sx={{
+            marginBottom: 2,
+            lineHeight: 1.7,
+            fontSize: { xs: '0.95rem', md: '1rem' }
+          }}
+        >
+          {paragraph}
+        </Typography>
+      ))}
 
-        <Typography style={{
-        marginBottom: '5px',
-        fontSize: '8px'
+        <Typography sx={{
+        marginTop: 2,
+        fontSize: { xs: '0.7rem', md: '0.75rem' },
+        fontStyle: 'italic',
+        color: 'text.secondary'
       }}>*passing password not guaranteed.</Typography>
-    </div>
+    </Box>
   );
 }
 
 function Footer() {
   return (
     <footer style={{
-      // position: 'absolute',
       left: 0,
       bottom: 0,
       right: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.2)',
+      backdropFilter: 'blur(10px)',
+      marginTop: '60px'
     }}>
-      <hr></hr>   
       <Container sx={{
         minHeight: '200px',
         height: '100%',
@@ -120,14 +146,31 @@ function Footer() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        py: 4
       }}>
         <KoFiButton id='iancooperman' />
         <Typography
           sx={{
-            marginTop: '5px',
+            marginTop: 2,
+            color: 'white',
+            textAlign: 'center',
+            px: 2,
+            fontSize: { xs: '0.9rem', md: '1rem' }
           }}
         >Your contribution will always be appreciated, but will never be necessary.</Typography>
-        <a href='mailto:ian.pl.cooperman@gmail.com?subject=SaludSecure'><Typography>Email me feedback!</Typography></a>
+        <a
+          href='mailto:ian.pl.cooperman@gmail.com?subject=SaludSecure'
+          style={{ textDecoration: 'none' }}
+        >
+          <Typography sx={{
+            color: 'white',
+            textDecoration: 'underline',
+            marginTop: 1,
+            '&:hover': {
+              opacity: 0.8
+            }
+          }}>Email me feedback!</Typography>
+        </a>
       </Container>
     </footer>
   )
@@ -161,33 +204,50 @@ function PasswordGenerator() {
 
   return (
     <div className='PasswordGenerator'>
-      <Card  sx={{ 
-        backgroundColor: 'primary.secondary',
-        minHeight: 234,
-        aspectRatio: 1.618
+      <Card  sx={{
+        backgroundColor: 'white',
+        minHeight: { xs: 'auto', md: 234 },
+        borderRadius: 4,
+        boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
+        overflow: 'visible'
       }}>
         <CardContent sx={{
             height: '100%',
-            // backgroundColor: 'skyblue',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-around',
             alignItems: 'center',
+            padding: { xs: 3, md: 4 },
+            '&:last-child': { paddingBottom: { xs: 3, md: 4 } }
           }}>
-            <Typography variant='h5'>Generate a simple (but usable) password.</Typography>
+            <Typography
+              variant='h5'
+              sx={{
+                fontWeight: 600,
+                mb: 2,
+                fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.5rem' },
+                textAlign: 'center',
+                color: '#009fe2'
+              }}
+            >
+              Generate a simple (but usable) password.
+            </Typography>
           <Box sx={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            width: '90%',
+            width: '100%',
+            mb: 2
           }}>
             <TextField
               id="generated-password"
               value={password}
-              // style={{ width: '80%' }}
               inputProps={{
                 style: {
                   textAlign: 'center',
+                  fontSize: '1.25rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.5px'
                 }
               }}
               slotProps={{
@@ -195,46 +255,110 @@ function PasswordGenerator() {
                   readOnly: true,
                 },
               }}
-            />
-            <Button size='small' sx={{
-                textTransform: 'none',
-                textDecoration: 'underline',
-                '&:hover': {
-                  textDecoration: 'underline',
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  backgroundColor: '#f5f5f5',
+                  '&:hover': {
+                    backgroundColor: '#eeeeee',
+                  },
+                  '&.Mui-focused': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#009fe2',
+                    }
+                  }
                 }
               }}
-              onClick={() => setGenerateAdvancedPasswords(!generateAdvancedPasswords)}>
-                {generateAdvancedPasswords ? '"It needs to be even simpler."' : '"No wait! I like added security!"' }
-              </Button>
+            />
+            <Button
+              size='small'
+              sx={{
+                textTransform: 'none',
+                textDecoration: 'underline',
+                mt: 1,
+                fontSize: { xs: '0.8rem', md: '0.875rem' },
+                color: '#009fe2',
+                '&:hover': {
+                  textDecoration: 'underline',
+                  backgroundColor: 'transparent',
+                  color: '#0077b3'
+                }
+              }}
+              onClick={() => setGenerateAdvancedPasswords(!generateAdvancedPasswords)}
+            >
+              {generateAdvancedPasswords ? '"It needs to be even simpler."' : '"No wait! I like added security!"' }
+            </Button>
           </Box>
-          <ButtonGroup variant='contained' aria-label='Basic button group'>
-            <Button variant='contained' color='primary' onClick={ generatePassword } endIcon={<RefreshIcon />}>Regenerate</Button>
-            <Button variant='contained' color='primary' onClick={copyPasswordToClipboard} endIcon={<ContentCopyIcon />}>Copy to Clipboard  </Button>
-          </ButtonGroup>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
+              gap: { xs: 1.5, sm: 0 },
+              width: { xs: '100%', sm: 'auto' }
+            }}
+          >
+            <Button
+              variant='contained'
+              onClick={ generatePassword }
+              endIcon={<RefreshIcon />}
+              sx={{
+                py: 1.5,
+                px: { xs: 2, sm: 3 },
+                fontWeight: 600,
+                fontSize: { xs: '0.9rem', md: '1rem' },
+                boxShadow: 2,
+                borderRadius: { xs: 1, sm: '4px 0 0 4px' },
+                backgroundColor: '#ff9900',
+                '&:hover': {
+                  backgroundColor: '#e68a00'
+                }
+              }}
+            >
+              Regenerate
+            </Button>
+            <Button
+              variant='contained'
+              onClick={copyPasswordToClipboard}
+              endIcon={<ContentCopyIcon />}
+              sx={{
+                py: 1.5,
+                px: { xs: 2, sm: 3 },
+                fontWeight: 600,
+                fontSize: { xs: '0.9rem', md: '1rem' },
+                boxShadow: 2,
+                borderRadius: { xs: 1, sm: '0 4px 4px 0' },
+                backgroundColor: '#ff9900',
+                '&:hover': {
+                  backgroundColor: '#e68a00'
+                }
+              }}
+            >
+              Copy to Clipboard
+            </Button>
+          </Box>
         </CardContent>
       </Card>
-      
+
     </div>
-    
+
   );
   
 }
 
 
-function capitalize(string) {
+function capitalizeString(string) {
   return string[0].toUpperCase() + string.slice(1);
 }
 
 function randomAdjective() {
-  let slug = generateSlug(1, { 
+  let slug = generateSlug(1, {
     partsOfSpeech: ['adjective']
   });
-  slug = capitalize(slug);
+  slug = capitalizeString(slug);
   return slug;
 }
 
 function randomNoun() {
-  let slug = generateSlug(1, { 
+  let slug = generateSlug(1, {
     partsOfSpeech: ['noun'],
     categories: {
       noun: [
@@ -253,9 +377,9 @@ function randomNoun() {
         "time",
         "transportation"
       ]
-    } 
+    }
   });
-  slug = capitalize(slug);
+  slug = capitalizeString(slug);
   return slug;
 }
 
